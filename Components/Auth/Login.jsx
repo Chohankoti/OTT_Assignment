@@ -6,7 +6,7 @@ export default function Login() {
     const navigation = useNavigation();
 
     const handleLoginPress = () => {
-        navigation.navigate('BottomTabs');
+        navigation.navigate('Drawer');
     };
 
     return (
