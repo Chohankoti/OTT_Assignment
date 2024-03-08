@@ -13,7 +13,7 @@ const Drawer = createDrawerNavigator();
 
 const CustomHeader = ({ navigation }) => {
   return (
-    <DrawerToggleButton onPress={() => navigation.toggleDrawer()} tintColor='#000' />
+    <DrawerToggleButton size="40" onPress={() => navigation.toggleDrawer()} tintColor="#fff" color="#fff" />
   );
 };
 
