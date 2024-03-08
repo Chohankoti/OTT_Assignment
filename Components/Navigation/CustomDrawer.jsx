@@ -28,7 +28,6 @@ const CustomDrawer = props => {
             style={{
               color: '#fff',
               fontSize: 18,
-              fontFamily: 'Roboto-Medium',
               marginBottom: 5,
             }}>
             Sai Pallavi
@@ -37,7 +36,6 @@ const CustomDrawer = props => {
             <Text
               style={{
                 color: '#fff',
-                fontFamily: 'Roboto-Regular',
                 marginRight: 5,
               }}>
               saipallavi@gmail.com
@@ -55,7 +53,6 @@ const CustomDrawer = props => {
             <Text
               style={{
                 fontSize: 15,
-                fontFamily: 'Roboto-Medium',
                 marginLeft: 5,
               }}>
               Tell a Friend
@@ -68,7 +65,6 @@ const CustomDrawer = props => {
             <Text
               style={{
                 fontSize: 15,
-                fontFamily: 'Roboto-Medium',
                 marginLeft: 5,
               }}>
               Sign Out
