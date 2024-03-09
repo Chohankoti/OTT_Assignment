@@ -17,7 +17,13 @@ export default function Cast({ cast }) {
           cast.map((person, index) => (
             <View className="mr-4 items-center" key={index}>
               <View className="overflow-hidden rounded-full h-20 w-20 items-center border border-neutral-500">
-                <Image className="rounded-2xl h-24 w-20" source={{ uri: image185(person?.profile_path)}} />
+                <Image
+                  className="rounded-2xl h-24 w-20"
+                  source={
+                     person?.profile_path ? {uri: image185(person?.profile_path)}: require('../../../../assets/alterimage.jpg')
+                  }
+                />
+
               </View>
 
               <Text className="text-white text-xs mt-1">

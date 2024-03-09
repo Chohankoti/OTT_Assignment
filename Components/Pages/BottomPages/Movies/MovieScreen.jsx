@@ -51,6 +51,7 @@ export default function MovieScreen({ route }) {
     setIsLoading(true);
     getMovieDetails(item.id);
     getMovieCredits(item.id);
+    getSimilarMoves(item.id);
   }, [item]);
 
 

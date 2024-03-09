@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Login from './Components/Auth/Login';
+import Register from './Components/Auth/Register';
 import DrawerTabs from './Components/Navigation/DrawerTabs';
 import MovieScreen from './Components/Pages/BottomPages/Movies/MovieScreen';
 import MovieSearch from './Components/Pages/BottomPages/Movies/MovieSearch';
@@ -17,6 +18,7 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Login' screenOptions={{headerShown: false}}>
         <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="Drawer" component={DrawerTabs}/>
         <Stack.Screen name="Movie" component={MovieScreen}/>
         <Stack.Screen name="Search" component={MovieSearch}/>

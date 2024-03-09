@@ -6,6 +6,7 @@ import TrendingMovies from './Movies/TrendingMovies';
 import MovieList from './Movies/MovieList';
 import { useNavigation } from '@react-navigation/native';
 import { fetchTopRatedMovies, fetchTrendingMovies, fetchUpcomingMovies } from '../../../api/moviedb';
+import Loading from './Loading';
 
 const ios = Platform.OS === 'ios';
 
@@ -13,7 +14,7 @@ export default function Movies() {
   const [trending, setTrending] = useState([]);
   const [upComing, setUpcoming] = useState([]);
   const [topRated, setTopRated] = useState([]);
-  const [isLoading, setIsLoading] = useState(true); 
+  const [isLoading, setIsLoading] = useState(false); 
   
   useEffect(()=>{
     getTrendingMovies();
@@ -51,7 +52,7 @@ export default function Movies() {
       </SafeAreaView>
 
       {isLoading?(
-        <Location/>
+        <Loading/>
       ):(
         <ScrollView
         showsVerticalScrollIndicator={false}

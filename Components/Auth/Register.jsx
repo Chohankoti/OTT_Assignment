@@ -13,23 +13,23 @@ import {
   import { Input } from "react-native-elements";
   import { useNavigation } from "@react-navigation/native";
 
-export default function Login() {
+export default function Register() {
     const [input, setInput] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const navigation = useNavigation();
 
-    const handleLoginPress = () => {
-        navigation.navigate('Drawer');
+    const handleRegisterPress = () => {
+        navigation.navigate('Login');
     };
 
     return (
         <SafeAreaView
         style={{
-          flex: 1,
-          alignItems: "center",
-          justifyContent:"center"
-        }}
+            flex: 1,
+            alignItems: "center",
+            justifyContent:"center"
+          }}
         className="bg-neutral-800"
       >
         <KeyboardAvoidingView>
@@ -82,7 +82,7 @@ export default function Login() {
             />
           </View>
   
-          <TouchableOpacity onPress={handleLoginPress}
+          <TouchableOpacity onPress={handleRegisterPress}
             style={
               password.length > 4
                 ? {
@@ -114,11 +114,11 @@ export default function Login() {
                 color: "white",
               }}
             >
-              Sign In
+              Sign Up
             </Text>
             </TouchableOpacity>
   
-          <Pressable onPress={() => navigation.navigate("Register")}>
+          <Pressable onPress={() => navigation.navigate("Login")}>
             <Text
               style={{
                 textAlign: "center",
@@ -128,7 +128,7 @@ export default function Login() {
                 marginTop: 15,
               }}
             >
-              New to Inkle? Sign up now
+              Already have Inkle? Sign In
             </Text>
           </Pressable>
             </>
