@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from './Components/Auth/Login';
 import DrawerTabs from './Components/Navigation/DrawerTabs';
 import MovieScreen from './Components/Pages/BottomPages/Movies/MovieScreen';
+import MovieSearch from './Components/Pages/BottomPages/Movies/MovieSearch';
 
 
 const Stack = createNativeStackNavigator();
@@ -18,6 +19,7 @@ function App() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Drawer" component={DrawerTabs}/>
         <Stack.Screen name="Movie" component={MovieScreen}/>
+        <Stack.Screen name="Search" component={MovieSearch}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
