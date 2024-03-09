@@ -5,22 +5,35 @@ import { AntDesign } from '@expo/vector-icons';
 import TrendingMovies from './Movies/TrendingMovies';
 import MovieList from './Movies/MovieList';
 import { useNavigation } from '@react-navigation/native';
-import { fetchTrendingMovies } from '../../../api/moviedb';
+import { fetchTopRatedMovies, fetchTrendingMovies, fetchUpcomingMovies } from '../../../api/moviedb';
 
 const ios = Platform.OS === 'ios';
 
 export default function Movies() {
-  const [trending, setTrending] = useState([1, 2, 3]);
-  const [upComing, setUpcoming] = useState([1, 2, 3]);
-  const [topRated, setTopRated] = useState([1, 2, 3]);
+  const [trending, setTrending] = useState([]);
+  const [upComing, setUpcoming] = useState([]);
+  const [topRated, setTopRated] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); 
   
   useEffect(()=>{
     getTrendingMovies();
+    getUpcomingMovies();
+    getTopRatedMovies();
   },[]);
 
   const getTrendingMovies = async() =>{
     const data = await fetchTrendingMovies();
     if(data && data.results)setTrending(data.results);
+  }
+
+  const getUpcomingMovies = async() =>{
+    const data = await fetchUpcomingMovies();
+    if(data && data.results)setUpcoming(data.results);
+  }
+
+  const getTopRatedMovies = async() =>{
+    const data = await fetchTopRatedMovies();
+    if(data && data.results)setTopRated(data.results);
   }
 
 
@@ -36,7 +49,11 @@ export default function Movies() {
           </TouchableOpacity>
         </View>
       </SafeAreaView>
-      <ScrollView
+
+      {isLoading?(
+        <Location/>
+      ):(
+        <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 10 }}
       >
@@ -49,6 +66,10 @@ export default function Movies() {
         {/* Top movies row */}
         <MovieList title="Top Rated" data={topRated} />
       </ScrollView>
+      )}
+        
+
+      
     </View>
   );
 }

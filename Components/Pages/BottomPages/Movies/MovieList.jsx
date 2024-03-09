@@ -1,15 +1,14 @@
 import { View, Text, Image, Dimensions, ScrollView, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
+import { image185 } from '../../../../api/moviedb';
 
 var { width, height } = Dimensions.get('window');
 export default function MovieList({ title, data, hideSeeAll }) {
     const navigation = useNavigation();
-    const moviename = "KGF";
     
 
     const handleSearchPress = () => {
-      console.log("Search button pressed");
       navigation.navigate('Search');
     };
 
@@ -33,16 +32,16 @@ export default function MovieList({ title, data, hideSeeAll }) {
                 {data.map((item, index) => (
                     <TouchableWithoutFeedback
                         key={index}
-                        onPress={() => navigation.navigate('Movie',  item )} // Pass item directly as a prop
+                        onPress={() => navigation.navigate('Movie',  { item: item } )}
                     >
                         <View className="space-y-1 mr-4">
                             <Image
-                                source={require('../../../../assets/icon.png')}
+                                source={{uri: image185(item.poster_path)}}
                                 className="rounded-3xl"
                                 style={{ width: width * 0.33, height: height * 0.22 }}
                             />
                             <Text className="text-neutral-300 ml-1">
-                                {moviename.length > 14 ? moviename.slice(0, 14) + '...' : moviename}
+                                {item.title.length > 14 ? item.title.slice(0, 14) + '...' : item.title}
                             </Text>
                         </View>
                     </TouchableWithoutFeedback>
