@@ -1,11 +1,11 @@
 import React from 'react';
+import { View, Text} from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { DrawerToggleButton } from '@react-navigation/drawer';
 import CustomDrawer from './CustomDrawer';
+import { Entypo, Feather } from '@expo/vector-icons'; // Import icons from Expo
 
-import Profile from '../Pages/DrawerPages/Profile';
 import WatchLater from '../Pages/DrawerPages/WatchLater';
-
 import BottomTabs from './BottomTabs';
 
 const Drawer = createDrawerNavigator();
@@ -16,11 +16,11 @@ const CustomHeader = ({ navigation }) => {
   );
 };
 
-
-
 export default function DrawerTabs() {
   return (
-    <Drawer.Navigator drawerContent={props => <CustomDrawer {...props}/>}>
+    <Drawer.Navigator
+      drawerContent={props => <CustomDrawer {...props}/>}
+    >
       <Drawer.Screen
         name="DMovies"
         component={BottomTabs}
@@ -29,7 +29,9 @@ export default function DrawerTabs() {
           headerTransparent: true,
           headerLeft: () => <CustomHeader />,
           title:'',
-          drawerLabel: 'Home', 
+          drawerLabel: ({ focused, color, size }) => (           
+              <Text style={{ color: '#fff' }}> Home</Text>           
+          ),
         }}
       />
       <Drawer.Screen
@@ -40,19 +42,9 @@ export default function DrawerTabs() {
           headerTransparent: true,
           headerLeft: () => <CustomHeader />,
           title:'',
-          drawerLabel: 'WatchLater', 
-        }}
-      />
-      <Drawer.Screen
-        name="Profile"
-        component={Profile}
-        options={{
-          headerShown: true,
-          headerTransparent: true,
-          headerLeft: () => <CustomHeader />,
-          title:'',
-          drawerLabel: 'Profile', 
-          
+          drawerLabel: ({ focused, color, size }) => (
+              <Text style={{ color: '#fff' }}> Watch Later</Text>
+          ),        
         }}
       />
     </Drawer.Navigator>
