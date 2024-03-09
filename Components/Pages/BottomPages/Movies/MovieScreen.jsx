@@ -48,7 +48,6 @@ export default function MovieScreen({ route }) {
   const navigation = useNavigation();
 
   useEffect(() => {
-    setIsLoading(true);
     getMovieDetails(item.id);
     getMovieCredits(item.id);
     getSimilarMoves(item.id);
@@ -56,20 +55,26 @@ export default function MovieScreen({ route }) {
 
 
   const getMovieDetails = async id => {
+    setIsLoading(true);
     const data = await fetchMovieDetails(id);
     if (data) setMovie(data);
     setIsLoading(false);
   };
 
   const getMovieCredits = async id => {   
+      setIsLoading(true);
       const data = await fetchMovieCredits(id);
       if(data && data.cast)setCast(data.cast);
+      console.log("Cast Hooks: ",cast);
       setIsLoading(false);
   };
 
   const getSimilarMoves = async id => {
+    setIsLoading(true);
     const data = await fetchSimilarMovies(id);
     if (data && data.results) setSimilarMovies(data.results);
+    console.log("Similar Movies: ",data.results);
+    console.log("Similar Movies Hooks: ",similarMovies);
     setIsLoading(false);
   };
 
@@ -137,7 +142,7 @@ export default function MovieScreen({ route }) {
       <Cast cast={cast} />
 
       {/* Similar movie */}
-      <MovieList title="Similar Movies" hideSeeAll={true} data={similarMovies} />
+      {/* <MovieList title="Similar Movies" hideSeeAll={true} data={similarMovies} /> */}
     </ScrollView>
   );
 }
